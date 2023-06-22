@@ -55,26 +55,22 @@ function agregarProductoToTable(producto)
   
   ];
 
-    cells.forEach(
-                   (cellValue, index) => { // decimos que hacer con el valor y el indice de la celda
-                                          const cell = row.insertCell();
-                                          cell.textContent = cellValue;
+  cells.forEach((cellValue, index) => {
+    const cell = row.insertCell();
+    cell.textContent = cellValue;
 
-                                          if (index === cells.length - 1 && parseFloat(cellValue) <= 7 ) {
-                                            cell.style.backgroundColor = 'orangered';
-                                            
-                                            cell.style.color='white';
-                                            cell.style.fontWeight='bold';
-                                          } 
-                                          
-                                          if (index === cells.length - 1 && parseFloat(cellValue) >= 7) {
-                                            cell.style.backgroundColor = 'limegreen';
-                                            cell.style.color='white';
-                                            cell.style.fontWeight='bold';
-                                          } 
-
-                                          }
-                    ); // fin del lazo forEach
+    if (index === 5) { // Verificar que es la columna 5 (el índice comienza en 0)
+      const valorColumna5 = parseFloat(cellValue);
+  
+      if (valorColumna5 === 10) {
+        row.style.backgroundColor = 'rgba(235, 237, 239)';
+      }
+      
+      if (valorColumna5 === 21) {
+        row.style.backgroundColor = 'rgba(249, 231, 159)';
+      }
+    }
+  });
 
 
   // AHORA INSERTAMOS OTRA CELDA PARA COLOCAR LOS BOTONES EDITAR Y ELIMINAR
@@ -196,3 +192,15 @@ function registrarProducto()  // FUNCON PARA MANEJAR EL EVENTO SUBMIT DEL FORMUL
 
 //Calculo del total
 
+//INTENGO DE TOTAL
+const total = {
+  subtotal
+}
+
+let suma = 0;
+
+for (let n of subtotal) {
+	suma += n;
+}
+
+document. getElementById("total").innerHTML="Total "+suma;
